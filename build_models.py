@@ -30,7 +30,7 @@ class FeaExt(nn.Module):
     def forward(self, inputs):
         b, t, c, h, w = inputs.shape
         idx = t // 2
-        ref = inputs[:, :, idx, :, :]
+        ref = inputs[:, idx, :, :, :]
         ref = self.ref(ref)
 
         agg = self.agg(inputs.reshape(b * t, c, h, w))
